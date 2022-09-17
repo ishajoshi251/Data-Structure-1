@@ -1,0 +1,25 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        if len(ransomNote) > len( magazine):
+            return False
+        d = {}
+        f = {}
+        for i in magazine:
+            if i in d:
+                d[i] += 1
+            else:
+                d[i] =1
+        for i in ransomNote:
+            if i in f:
+                f[i] += 1
+            else:
+                f[i] = 1
+        for i in ransomNote:
+            if i in d:
+                if f[i] <= d[i]:
+                    continue
+                else:
+                    return False
+            else:
+                return False
+        return True
